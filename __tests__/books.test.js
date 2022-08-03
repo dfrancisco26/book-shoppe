@@ -19,7 +19,7 @@ describe('book routes', () => {
   });
 
 
-  it('GET /books/:id should return book detail', async () => {
+  it('/books/:id should return book detail', async () => {
     const resp = await request(app).get('/books/1');
     expect(resp.body).toEqual({
       id: '1',

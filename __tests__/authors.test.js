@@ -18,7 +18,17 @@ describe('author routes', () => {
     });
   });
 
-  
+
+  it('/authors/:id should return author details', async () => {
+    const resp = await request(app).get('/authors/1');
+    expect(resp.body).toEqual({
+      id: '1',
+      name: 'D.F.',
+      pob: 'Nowhere',
+      dob: 1992
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
