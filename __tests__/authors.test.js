@@ -19,16 +19,6 @@ describe('author routes', () => {
   });
 
 
-  it('#GET /authors/:id should return author details', async () => {
-    const resp = await request(app).get('/authors/1');
-    expect(resp.body).toEqual({
-      id: '1',
-      name: 'D.F.',
-      pob: 'Nowhere',
-      dob: 1992,
-      books: expect.any(Array)
-    });
-  });
 
   it('#GET getAbs /authors/:id should return author details and books', async () => {
     const resp = await request(app).get('/authors/1');
