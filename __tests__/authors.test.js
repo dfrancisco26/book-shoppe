@@ -25,15 +25,28 @@ describe('author routes', () => {
       id: '1',
       name: 'D.F.',
       pob: 'Nowhere',
-      dob: 1992
+      dob: 1992,
+      books: expect.any(Array)
     });
   });
 
+  it('#GET getAbs /authors/:id should return author details and books', async () => {
+    const resp = await request(app).get('/authors/1');
+    expect(resp.body).toEqual({
+      id: '1',
+      name: 'D.F.',
+      pob: 'Nowhere',
+      dob: 1992,
+      books: expect.any(Array)
+    });
+  });
+  
   it('#POST /authors should create a new author', async () => {
     const newAuthor = {
       name: 'not you',
       pob: 'not here',
-      dob: 2005
+      dob: 2005,
+      books: expect.any(Array)
     };
     const resp = await request(app).post('/authors').send(newAuthor);
     expect(resp.body).toEqual({

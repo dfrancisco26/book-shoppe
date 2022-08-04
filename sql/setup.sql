@@ -36,19 +36,19 @@ INSERT INTO authors (name, pob, dob) VALUES
     ('Iglus Ran', 'Alone', 2050);
 
 
--- CREATE table books_authors (
---     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---     author_id BIGINT,
---     book_id BIGINT,
---     FOREIGN KEY (author_id) REFERENCES authors(id),
---     FOREIGN KEY (book_id) REFERENCES books(id)
--- );
+CREATE table books_authors (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    author_id BIGINT,
+    book_id BIGINT,
+    FOREIGN KEY (author_id) REFERENCES authors(id),
+    FOREIGN KEY (book_id) REFERENCES books(id)
+);
 
--- INSERT INTO books_authors(author_id, book_id) VALUES
---     (1,1),
---     (2,2),
---     (1,3),
---     (1,4),
---     (2,5),
---     (1,6),
---     (3,7);
+INSERT INTO books_authors(author_id, book_id) VALUES
+    (1,1),
+    (2,2),
+    (1,3),
+    (1,4),
+    (2,5),
+    (1,6),
+    (3,7);
