@@ -9,7 +9,7 @@ describe('author routes', () => {
     return setup(pool);
   });
 
-  it('returns a list of authors', async () => {
+  it('#GET returns a list of authors', async () => {
     const res = await request(app).get('/authors');
     expect(res.body.length).toEqual(3);
     expect(res.body[0]).toEqual({
@@ -19,7 +19,7 @@ describe('author routes', () => {
   });
 
 
-  it('/authors/:id should return author details', async () => {
+  it('#GET /authors/:id should return author details', async () => {
     const resp = await request(app).get('/authors/1');
     expect(resp.body).toEqual({
       id: '1',
@@ -29,8 +29,20 @@ describe('author routes', () => {
     });
   });
 
+  it('#POST /authors should create a new author', async () => {
+    const newAuthor = {
+      name: 'not you',
+      pob: 'not here',
+      dob: 2005
+    };
+    const resp = await request(app).post('/authors').send(newAuthor);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newAuthor,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
-
 });
