@@ -9,7 +9,7 @@ describe('book routes', () => {
     return setup(pool);
   });
 
-  it('/books should return a list of books', async () => {
+  it('#GET /books should return a list of books', async () => {
     const resp = await request(app).get('/books');
     expect(resp.body.length).toEqual(7);
     expect(resp.body[0]).toEqual({
@@ -19,12 +19,27 @@ describe('book routes', () => {
   });
 
 
-  it('/books/:id should return book detail', async () => {
+  it('#GET /books/:id should return book detail', async () => {
     const resp = await request(app).get('/books/1');
     expect(resp.body).toEqual({
       id: '1',
+      author: 'D.F.',
       title: 'SQL for dummies',
       released: 1992,
+    });
+  });
+
+
+  it('#POST /books should create a new book', async () => {
+    const newBook = {
+      title: 'another one',
+      author: 'D.F.',
+      released: 2022,
+    };
+    const resp = await request(app).post('/books').send(newBook);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newBook,
     });
   });
 

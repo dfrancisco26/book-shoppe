@@ -14,14 +14,14 @@ CREATE table books (
     released INT
 );
 
-INSERT INTO books (title, released) VALUES
-('SQL for dummies', 1992),
-('Supabase goes hard', 2022),
-('Can I get a witness?', 1995),
-('Y2K wuz lame', 2001),
-('Heroku cool too', 2021),
-('Wait what', 2019),
-('my only book', 2024);
+INSERT INTO books (title, author, released) VALUES
+('SQL for dummies', 'D.F.', 1992),
+('Supabase goes hard', 'Alt Tab Group', 2022),
+('Can I get a witness?', 'D.F.', 1995),
+('Y2K wuz lame', 'D.F.', 2001),
+('Heroku cool too', 'Alt Tab Group', 2021),
+('Wait what', 'D.F.', 2019),
+('my only book', 'Iglus Ran', 2024);
 
 CREATE table authors (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
