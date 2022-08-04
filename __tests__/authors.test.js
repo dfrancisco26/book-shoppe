@@ -27,7 +27,11 @@ describe('author routes', () => {
       name: 'D.F.',
       pob: 'Nowhere',
       dob: 1992,
-      books: expect.any(Array)
+      books: expect.arrayContaining([
+        { 'id':1, 'title':'SQL for dummies', 'author':'D.F.', 'released':1992 },
+        { 'id':3, 'title':'Can I get a witness?', 'author':'D.F.', 'released':1995 },
+        { 'id':4, 'title':'Y2K wuz lame', 'author':'D.F.', 'released':2001 },
+        { 'id':6, 'title':'Wait what', 'author':'D.F.', 'released':2019 }])
     });
   });
   
